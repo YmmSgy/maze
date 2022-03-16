@@ -27,8 +27,7 @@ const cd_nw     = cd_n.add(cd_w);
 const mazewidth = 40;
 const mazeheight = 40;
 
-function Nextdir() {
-    const arr = [ cd_e, cd_s, cd_w, cd_n ];
+function shufflearr(arr) {
     for (let rem = arr.length; rem > 0; rem--) {
         // get random index from remaining pool
         const r = Math.floor(Math.random() * rem);
@@ -37,6 +36,11 @@ function Nextdir() {
         arr[rem - 1] = arr[r];
         arr[r] = temp;
     }
+}
+
+function Nextdir() {
+    const arr = [ cd_e, cd_s, cd_w, cd_n ];
+    shufflearr(arr);
     this.get = function () { return arr.pop(); };
     this.isempty = function () { return arr.length === 0; };
 }
@@ -142,8 +146,7 @@ function drawmaze() {
     ctx.stroke();
 }
 
-// maze algorithm
-while (activetiles.length !== 0) {
+function algostep() {
     const nextdircarousel = new Nextdir();
     // repeat until valid direction found
     while (true) {
@@ -165,6 +168,11 @@ while (activetiles.length !== 0) {
             break;
         }
     }
+}
+
+// maze algorithm
+while (activetiles.length !== 0) {
+    algostep();
 }
 
 drawmaze();
