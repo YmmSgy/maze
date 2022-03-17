@@ -124,10 +124,12 @@ const cheight = ctx.canvas.height - linewidth;
 const twidth = Math.floor(cwidth / mazewidth);
 const theight = Math.floor(cheight / mazeheight);
 
-function drawmaze() {
+function clearmaze() {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, cwidth, cheight);
+}
 
+function drawmaze() {
     ctx.strokeStyle = 'black';
     ctx.lineWidth = linewidth;
     ctx.lineCap = 'square';
@@ -175,6 +177,7 @@ while (activetiles.length !== 0) {
     algostep();
 }
 
+clearmaze();
 drawmaze();
 
 const t1 = Date.now();
