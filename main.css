@@ -1,0 +1,15 @@
+canvas {
+    image-rendering: pixelated;
+}
+
+/* style to force block display */
+.block {
+    display: block;
+}
+
+/* compact, bullet-less list */
+.invisible-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
