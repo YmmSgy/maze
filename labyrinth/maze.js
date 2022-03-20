@@ -132,7 +132,6 @@ function clearmaze() {
 function drawmaze() {
     ctx.strokeStyle = 'black';
     ctx.lineWidth = linewidth;
-    ctx.lineCap = 'square';
 
     ctx.beginPath();
     for (const wall of walls) {
@@ -178,6 +177,19 @@ while (activetiles.length !== 0) {
 }
 
 clearmaze();
+ctx.strokeStyle = 'black';
+ctx.lineWidth = linewidth;
+ctx.lineCap = 'square';
+for (let y = 0; y < mazeheight + 1; y++) {
+    for (let x = 0; x < mazeheight + 1; x++) {
+        const realx = corigin.x + x * twidth;
+        const realy = corigin.y + y * theight;
+        ctx.moveTo(realx, realy);
+        ctx.lineTo(realx, realy);
+    }
+}
+ctx.stroke();
+ctx.lineCap = 'butt';
 drawmaze();
 
 const t1 = Date.now();
